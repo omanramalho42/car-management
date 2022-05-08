@@ -31,12 +31,12 @@ interface Props {
   }[]
 }
 
-const Cars = ( props : Props) => {
+const Cars = (props: Props) => {
 
   const [cars, setCars] = useState({});
   useEffect(() => {
     setCars(props)
-  },[props])
+  }, [props])
 
   console.log("cars:")
   console.log(cars)
@@ -53,46 +53,46 @@ const Cars = ( props : Props) => {
       <Container>
 
         <ContainerSearchInput>
-          <SearchInput 
+          <SearchInput
             // defaultValue="" 
-            value={search} 
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <SearchIcon />
         </ContainerSearchInput>
 
-        { search !== "" ? props.data.filter(( item ) => item.brand.includes(search) ).map(filterYear => (
-            <Card key={filterYear._id}>
-              <Text>CARRO</Text>
-              <ContentInfo>
-                  <TextInfo>Marca: {filterYear.brand}</TextInfo>
-                  {/* <TextInfo>Id: {item._id}</TextInfo> */}
-                  <TextInfo>Modelo: {filterYear.model}</TextInfo>
-                  <TextInfo>Ano de fabricação: {filterYear.fabrication}</TextInfo>
-                  <TextInfo>Cor</TextInfo>
-                  <TextInfo>forma: {filterYear.form}</TextInfo>
-                  <TextInfo>Placa: {filterYear.sign}</TextInfo>
-              </ContentInfo>
-              <NextLink href={`/cars/${filterYear._id}`} passHref>
-                <Button>
-                  <Text>Edit</Text>
-                  <AiOutlineEdit size={24} />
-                </Button>
-              </NextLink>
+        {search !== "" ? props.data.filter((item) => item.brand.includes(search)).map(filterYear => (
+          <Card key={filterYear._id}>
+            <Text>CARRO</Text>
+            <ContentInfo>
+              <TextInfo>Marca: {filterYear.brand}</TextInfo>
+              {/* <TextInfo>Id: {item._id}</TextInfo> */}
+              <TextInfo>Modelo: {filterYear.model}</TextInfo>
+              <TextInfo>Ano de fabricação: {filterYear.fabrication}</TextInfo>
+              <TextInfo>Cor</TextInfo>
+              <TextInfo>forma: {filterYear.form}</TextInfo>
+              <TextInfo>Placa: {filterYear.sign}</TextInfo>
+            </ContentInfo>
+            <NextLink href={`/cars/${filterYear._id}`} passHref>
+              <Button>
+                <Text>Edit</Text>
+                <AiOutlineEdit size={24} />
+              </Button>
+            </NextLink>
           </Card>
         )) : (
-        <Content>
-          {props.data.map((item ,index) => item && (
+          <Content>
+            {props.data.map((item, index) => item && (
               <Card key={index}>
                 <Text>CARRO</Text>
                 <ContentInfo>
-                    <TextInfo>Marca: {item.brand}</TextInfo>
-                    {/* <TextInfo>Id: {item._id}</TextInfo> */}
-                    <TextInfo>Modelo: {item.model}</TextInfo>
-                    <TextInfo>Ano de fabricação: {item.fabrication}</TextInfo>
-                    <TextInfo>Cor</TextInfo>
-                    <TextInfo>forma: {item.form}</TextInfo>
-                    <TextInfo>Placa: {item.sign}</TextInfo>
+                  <TextInfo>Marca: {item.brand}</TextInfo>
+                  {/* <TextInfo>Id: {item._id}</TextInfo> */}
+                  <TextInfo>Modelo: {item.model}</TextInfo>
+                  <TextInfo>Ano de fabricação: {item.fabrication}</TextInfo>
+                  <TextInfo>Cor</TextInfo>
+                  <TextInfo>forma: {item.form}</TextInfo>
+                  <TextInfo>Placa: {item.sign}</TextInfo>
                 </ContentInfo>
                 <NextLink href={`/cars/${item._id}`} passHref>
                   <Button>
@@ -100,10 +100,10 @@ const Cars = ( props : Props) => {
                     <AiOutlineEdit size={24} />
                   </Button>
                 </NextLink>
-            </Card>
+              </Card>
             ))}
           </Content>
-      )}
+        )}
       </Container>
     </>
   )
@@ -111,8 +111,8 @@ const Cars = ( props : Props) => {
 
 export default Cars
 
-export const getServerSideProps = async ( ) => {
-  const response = await fetch(`http://localhost:3001/cars`);
+export const getServerSideProps = async () => {
+  const response = await fetch(`https://car-management-production-c408.up.railway.app/`);
   const data: Props = await response.json();
 
   console.log("data preview:");
