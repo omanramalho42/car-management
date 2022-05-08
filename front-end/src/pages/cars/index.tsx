@@ -112,7 +112,7 @@ const Cars = (props: Props) => {
 export default Cars
 
 export const getServerSideProps = async () => {
-  const response = await fetch(`https://car-management-production-c408.up.railway.app/`);
+  const response = await fetch(`http://localhost:3001/cars`);
   const data: Props = await response.json();
 
   console.log("data preview:");

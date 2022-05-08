@@ -24,57 +24,57 @@ interface Props {
   btn_link_two: string;
 }
 
-const Home = ({ 
-  text_one, 
-  text_second, 
-  btn_title, 
-  btn_link, 
-  btn_link_two, 
-  btn_title_two 
+const Home = ({
+  text_one,
+  text_second,
+  btn_title,
+  btn_link,
+  btn_link_two,
+  btn_title_two
 }: Props) => {
 
   return (
-   <Container>
-    
-    <Header />
-    
-    <Content>
-      
-      <ContainerText>
-        <TextContent className='text_one'>
+    <Container>
+
+      <Header />
+
+      <Content>
+
+        <ContainerText>
+          <TextContent className='text_one'>
             {text_one ? text_one : 'Lorem Ipsum Dollar'}
-        </TextContent>
-        <SubTextContent className='text_second'>
-        {text_second ? text_second : 'Sign Merc'}
-        </SubTextContent>
-      </ContainerText>
+          </TextContent>
+          <SubTextContent className='text_second'>
+            {text_second ? text_second : 'Sign Merc'}
+          </SubTextContent>
+        </ContainerText>
 
-      <ContainerButton>
-        <NextLink href={"/cars/create"} passHref>
-          <Button className='btn_title'>{btn_title ? btn_title : 'Create'}</Button>
-        </NextLink>
-        <NextLink href="/cars" passHref>
-          <Button className='btn_title_two'>{btn_title_two ? btn_title_two : 'Preview'}</Button>
-        </NextLink>
-      </ContainerButton>
+        <ContainerButton>
+          <NextLink href={"/cars/create"} passHref>
+            <Button className='btn_title'>{btn_title ? btn_title : 'Create'}</Button>
+          </NextLink>
+          <NextLink href="/cars" passHref>
+            <Button className='btn_title_two'>{btn_title_two ? btn_title_two : 'Preview'}</Button>
+          </NextLink>
+        </ContainerButton>
 
-      {/* <DemoScene /> */}
-      
-    </Content>
+        {/* <DemoScene /> */}
 
-   </Container>
+      </Content>
+
+    </Container>
   )
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`http://localhost:3001/`)
+  const response = await fetch(`https://car-management-production-c408.up.railway.app/`)
   const data = await response.json();
   console.log("💥")
   console.log(data);
   return {
     props: { data }
   }
-  
+
 }
 
 export default Home
