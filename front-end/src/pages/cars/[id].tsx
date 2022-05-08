@@ -39,7 +39,7 @@ type UpdateCarForm = {
     brand: string;
     model: string;
     sign: string;
-    fabrication: number;
+    fabrication: string;
     type: string;
     version: string;
     form: string;
@@ -73,7 +73,7 @@ interface Props {
         sign: string;
         type: string;
         form: string;
-        fabrication: number;
+        fabrication: string;
         version: string;
     }
 }
